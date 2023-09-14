@@ -1,0 +1,16 @@
+1. Language:
+C++
+
+1.1 Why
+We are all interested in getting to know it as it seems to be well adopted in the industry.
+
+2. What Program:
+Ray tracing/renderer.
+
+2.1 Justification
+Our project will highlight the speed of C++ and its ability to deal well with intense mathematical computation.
+
+There's not much that we have to figure out ourselves in terms of math and so we should be able to spend our time on the actual code.
+There's nothing particularly weird about ray tracing - it is a well trodden path that hopefully shouldn't be too hard for us to walk down.
+On the other hand, there should be plenty of room to expand the project as necessary, whether that be with a time component and movement,
+different and more complex types of material, or more.
