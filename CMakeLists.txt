@@ -1,9 +1,16 @@
 cmake_minimum_required(VERSION 3.24)
-project(untitled)
+project(Raytracer)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(untitled main.cpp)
+add_executable(Raytracer main.cpp)
+
+target_include_directories(Raytracer PUBLIC /opt/homebrew/opt/libpng/include/libpng16)
+target_link_directories(Raytracer PUBLIC /opt/homebrew/opt/libpng/lib)
+target_link_libraries(Raytracer /opt/homebrew/opt/libpng/lib/libpng16.dylib)
+
+#find_library(libpng libpng)
+#target_include_directories(Raytracer PUBLIC ${libpng})
 
 include(FetchContent)
 FetchContent_Declare(
