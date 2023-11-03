@@ -3,7 +3,9 @@ project(Raytracer)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Raytracer main.cpp)
+add_executable(Raytracer main.cpp
+        obj_loader_testing.cpp
+        obj_loader_testing.cpp)
 
 target_include_directories(Raytracer PUBLIC /opt/homebrew/opt/libpng/include/libpng16)
 target_link_directories(Raytracer PUBLIC /opt/homebrew/opt/libpng/lib)
