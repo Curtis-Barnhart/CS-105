@@ -3,4 +3,6 @@ project(Raytracer)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Raytracer main.cpp Vec3.cpp Vec3.h)
+add_executable(Raytracer main.cpp Vec3.cpp Vec3.h
+        Color.cpp
+        Color.h)

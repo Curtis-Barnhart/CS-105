@@ -30,7 +30,7 @@
          different altitudes,
          adding different effects to light traveling through different regions of an atmosphere. 
          2. Light Source Composition/Position/Quantity - Another way this project could be extended would be through
-         manipulation of light sources, whether that includes color, intensity, temperature, placement, quantity light
+         manipulation of light sources, whether that includes Color, intensity, temperature, placement, quantity light
          sources, or more. 
          3. If we seriously have too much time, we could always look into parallel computation.
 3. Justification
