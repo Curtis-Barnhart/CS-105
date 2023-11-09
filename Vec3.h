@@ -31,8 +31,8 @@ public:
     [[nodiscard]] double length_squared() const;
 };
 
-// point3 is just an alias for Vec3, but useful for geometric clarity in the code.
-using point3 = Vec3;
+// Point3 is just an alias for Vec3, but useful for geometric clarity in the code.
+using Point3 = Vec3;
 
 // Vector Utility Functions
 // Because these are all inline, we leave them in the header file so that they can
