@@ -8,27 +8,32 @@
 #include <cmath>
 #include <iostream>
 
+/**
+ * Vec3 stores a tuple of three doubles and provides a few utility methods for them.
+ * This can be useful for storing any sort of three dimensional data, like a color,
+ * a position in 3D space, or anything that can be built with these like a vector in 3D space.
+ */
 class Vec3 {
 public:
     double e[3];
 
-    Vec3();  // Default constructor sets all values to 0
-    Vec3(double e0, double e1, double e2);  // double constructor sets all values
+    Vec3();  // Default constructor sets all three values in Vec3 to 0
+    Vec3(double e0, double e1, double e2);  // double constructor sets all three values in Vec3
 
-    [[nodiscard]] double x() const;  // standard getters for all three values
-    [[nodiscard]] double y() const;
-    [[nodiscard]] double z() const;
+    [[nodiscard]] double x() const;  // getter for x component of Vec3
+    [[nodiscard]] double y() const;  // getter for y component of Vec3
+    [[nodiscard]] double z() const;  // getter for z component of Vec3
 
     Vec3 operator-() const;
-    double operator[](int i) const;
-    double& operator[](int i);
+    double operator[](int i) const; // indexing by 0 produces the x component, by 1 the y, and by 2 the z
+    double& operator[](int i); // indexing by 0 produces the x component, by 1 the y, and by 2 the z
 
-    Vec3& operator+=(const Vec3 &v);
-    Vec3& operator*=(double t);
-    Vec3& operator/=(double t);
+    Vec3& operator+=(const Vec3 &v);  // Component-wise addition of two Vec3
+    Vec3& operator*=(double t);  // Component-wise multiplication of two Vec3
+    Vec3& operator/=(double t);  // Component-wise division of two Vec3
 
-    [[nodiscard]] double length() const;
-    [[nodiscard]] double length_squared() const;
+    [[nodiscard]] double length() const;  // Returns the square root of the sum of the squares of a Vec3's components
+    [[nodiscard]] double length_squared() const;  // Returns the sum of the squares of the components of a Vec3
 };
 
 // Point3 is just an alias for Vec3, but useful for geometric clarity in the code.
