@@ -12,4 +12,4 @@ add_executable(
         Color.h
         Ray.h
         Ray.cpp
-)
+        Hittable.cpp Hittable.h Sphere.cpp Sphere.h)

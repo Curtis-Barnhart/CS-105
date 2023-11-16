@@ -26,11 +26,11 @@ public:
 
     Vec3 operator-() const;
     double operator[](int i) const; // indexing by 0 produces the x component, by 1 the y, and by 2 the z
-    double& operator[](int i); // indexing by 0 produces the x component, by 1 the y, and by 2 the z
+    double &operator[](int i); // indexing by 0 produces the x component, by 1 the y, and by 2 the z
 
-    Vec3& operator+=(const Vec3 &v);  // Component-wise addition of two Vec3
-    Vec3& operator*=(double t);  // Component-wise multiplication of two Vec3
-    Vec3& operator/=(double t);  // Component-wise division of two Vec3
+    Vec3 &operator+=(const Vec3 &v);  // Component-wise addition of two Vec3
+    Vec3 &operator*=(double t);  // Component-wise multiplication of two Vec3
+    Vec3 &operator/=(double t);  // Component-wise division of two Vec3
 
     [[nodiscard]] double length() const;  // Returns the square root of the sum of the squares of a Vec3's components
     [[nodiscard]] double length_squared() const;  // Returns the sum of the squares of the components of a Vec3
@@ -42,7 +42,7 @@ using Point3 = Vec3;
 // Vector Utility Functions
 // Because these are all inline, we leave them in the header file so that they can
 // be accessed by the C++ compiler in other files
-inline std::ostream& operator<<(std::ostream &out, const Vec3 &v) {
+inline std::ostream &operator<<(std::ostream &out, const Vec3 &v) {
     return out << v.e[0] << ' ' << v.e[1] << ' ' << v.e[2];
 }
 inline Vec3 operator+(const Vec3 &u, const Vec3 &v) {
