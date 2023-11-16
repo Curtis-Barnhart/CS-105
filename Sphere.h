@@ -13,6 +13,11 @@ class Sphere : public Hittable {
 public:
     Sphere(Point3 _center, double _radius);
 
+    /**
+     * Implements the hit method from Hittable.
+     * If the Ray intersects the sphere twice, the closer of the two intersections to the origin
+     * of the ray is recorded.
+     */
     bool hit(const Ray &r, double ray_tmin, double ray_tmax, HitRecord &rec) const override;
 
 private:
