@@ -6,11 +6,12 @@
 #include <cmath>
 
 /**
- *
- * @param center
- * @param radius
- * @param r
- * @return
+ * hit_sphere calculates if a ray will intersect with a sphere, and if so, returns the first parametric t value
+ * at which the ray intersects the sphere.
+ * @param center center of the sphere
+ * @param radius radius of the sphere
+ * @param r ray to calculate intersection with
+ * @return -1 if the ray never intersects the sphere, otherwise the parametric t at which
  */
 double hit_sphere(const Point3& center, double radius, const Ray& r) {
     Vec3 oc = r.origin() - center;
@@ -22,9 +23,12 @@ double hit_sphere(const Point3& center, double radius, const Ray& r) {
 }
 
 /**
- *
- * @param r
- * @return
+ * ray_color returns the color that a ray should "be".
+ * If the ray intersects a hard coded in sphere, a color will be returned as a function of the surface normal of the
+ * sphere at the point that the ray intersected it.
+ * If the ray never hits the sphere, a background gradient formula is followed.
+ * @param r ray to color in
+ * @return Color value which should be seen from that ray
  */
 Color ray_color(const Ray& r) {
     auto intersect = hit_sphere(Point3(0, 0, -1), 0.5, r);
