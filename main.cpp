@@ -1,6 +1,11 @@
 #include "Vec3.h"
 #include "Color.h"
 #include "Ray.h"
+#include "RTproject.h"
+#include "Hittable.h"
+#include "HittableList.h"
+#include "Sphere.h"
+
 
 #include <iostream>
 #include <cmath>
@@ -13,14 +18,14 @@
  * @param r ray to calculate intersection with
  * @return -1 if the ray never intersects the sphere, otherwise the parametric t at which
  */
-double hit_sphere(const Point3& center, double radius, const Ray& r) {
-    Vec3 oc = r.origin() - center;
-    auto a = r.direction().length_squared();
-    auto half_b = dot(oc, r.direction());
-    auto c = oc.length_squared() - radius*radius;
-    auto discriminant = half_b*half_b - a*c;
-    return (discriminant < 0) ? -1.0 : (-half_b - std::sqrt(discriminant)) / a;
-}
+//double hit_sphere(const Point3& center, double radius, const Ray& r) {
+//    Vec3 oc = r.origin() - center;
+//    auto a = r.direction().length_squared();
+//    auto half_b = dot(oc, r.direction());
+//    auto c = oc.length_squared() - radius*radius;
+//    auto discriminant = half_b*half_b - a*c;
+//    return (discriminant < 0) ? -1.0 : (-half_b - std::sqrt(discriminant)) / a;
+//}
 
 /**
  * ray_color returns the color that a ray should "be".
@@ -30,13 +35,17 @@ double hit_sphere(const Point3& center, double radius, const Ray& r) {
  * @param r ray to color in
  * @return Color value which should be seen from that ray
  */
-Color ray_color(const Ray& r) {
-    auto intersect = hit_sphere(Point3(0, 0, -1), 0.5, r);
-    // If it intersects the sphere, use a formula which determines color based on normal at intersection
-    if (intersect > 0.0) {
-        Vec3 norm = unit_vector(r.at(intersect) - Vec3(0, 0, -1));
-        return 0.5 * Color(norm.x() + 1, norm.y() + 1, norm.z() + 1);
+Color ray_color(const Ray& r, const Hittable& world) {
+    HitRecord rec;
+    if (world.hit(r, Interval(0, infinity), rec)) {
+        return 0.5 * (rec.normal + Color(1,1,1));
     }
+//    auto intersect = hit_sphere(Point3(0, 0, -1), 0.5, r);
+//    // If it intersects the sphere, use a formula which determines color based on normal at intersection
+//    if (intersect > 0.0) {
+//    Vec3 norm = unit_vector(r.at(intersect) - Vec3(0, 0, -1));
+//    return 0.5 * Color(norm.x() + 1, norm.y() + 1, norm.z() + 1);
+//}
 
     // If it misses the sphere, use a formula for background color
     Vec3 unit_direction = unit_vector(r.direction());
@@ -51,6 +60,13 @@ int main() {
     // ensure image height >= 1
     int image_height = static_cast<int>(image_width / aspect_ratio);
     image_height = (image_height < 1) ? 1 : image_height;
+
+    // World
+
+    HittableList world;
+
+    world.add(make_shared<Sphere>(Point3(0,0,-1), 0.5));
+    world.add(make_shared<Sphere>(Point3(0,-100.5,-1), 100));
 
     // Camera
     auto focal_length = 1.0;  // Length of vector from camera_center to viewport
@@ -83,7 +99,7 @@ int main() {
             auto ray_direction = pixel_center - camera_center;
             Ray r(camera_center, ray_direction);
 
-            Color pixel_color = ray_color(r);
+            Color pixel_color = ray_color(r, world);
             write_color(std::cout, pixel_color);
         }
     }

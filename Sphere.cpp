@@ -8,7 +8,7 @@
 
 Sphere::Sphere(Point3 _center, double _radius) : center(_center), radius(_radius) {}
 
-bool Sphere::hit(const Ray &r, double ray_tmin, double ray_tmax, HitRecord &rec) const {
+bool Sphere::hit(const Ray &r, Interval ray_t, HitRecord &rec) const {
     Vec3 oc = r.origin() - this->center;
     auto a = r.direction().length_squared();
     auto half_b = dot(oc, r.direction());
@@ -20,9 +20,9 @@ bool Sphere::hit(const Ray &r, double ray_tmin, double ray_tmax, HitRecord &rec)
 
     // Finding a root that both lies in the t range and is closest if there are two intersections
     auto root = (-half_b - sqrtd) / a;
-    if (root <= ray_tmin || ray_tmax <= root) {
+    if (!ray_t.surrounds(root)) {
         root = (-half_b + sqrtd) / a;
-        if (root <= ray_tmin || ray_tmax <= root) {
+        if (!ray_t.surrounds(root)) {
             return false;
         }
     }

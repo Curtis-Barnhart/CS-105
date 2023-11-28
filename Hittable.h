@@ -8,6 +8,7 @@
 
 #include "Ray.h"
 #include "Vec3.h"
+#include "Interval.h"
 
 class HitRecord {
 public:
@@ -42,7 +43,7 @@ public:
      * @param rec the HitRecord to store information about the intersection in
      * @return true if a hit occurred, else false
      */
-    virtual bool hit(const Ray &r, double ray_tmin, double ray_tmax, HitRecord &rec) const = 0;
+    virtual bool hit(const Ray &r, Interval ray_t, HitRecord &rec) const = 0;
 };
 
 

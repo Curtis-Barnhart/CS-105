@@ -13,7 +13,7 @@
 using std::shared_ptr;
 using std::make_shared;
 
-class HittableList {
+class HittableList : public Hittable {
 public:
     std::vector<shared_ptr<Hittable>> objects;
 
@@ -23,7 +23,7 @@ public:
     void clear();
     void add(shared_ptr<Hittable> object);
 
-    bool hit(const Ray& r, double ray_tmin, double ray_tmax, HitRecord& rec) const override;
+    bool hit(const Ray& r, Interval ray_t, HitRecord& rec) const override;
 };
 
 
