@@ -5,13 +5,13 @@
 #include <limits>
 #include <memory>
 
-#include "Interval.h"
-#include "Ray.h"
-#include "Vec3.h"
+//#include "Interval.h"
+//#include "Ray.h"
+//#include "Vec3.h"
 
 // usings
 
-using std::shared_ptr;
+//using std::shared_ptr;
 using std::make_shared;
 using std::sqrt;
 
@@ -28,7 +28,7 @@ inline double degrees_to_radians(double degrees) {
 
 // common headers
 
-#include "Ray.h"
-#include "Vec3.h"
+//#include "Ray.h"
+//#include "Vec3.h"
 
 #endif

@@ -117,6 +117,8 @@
 #include "Camera.h"
 #include "HittableList.h"
 #include "Sphere.h"
+
+
 int main() {
     HittableList world;
     world.add(make_shared<Sphere>(Point3 (0,0,-1), 0.5));

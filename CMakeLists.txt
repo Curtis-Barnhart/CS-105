@@ -12,6 +12,11 @@ add_executable(
         Color.h
         Ray.h
         Ray.cpp
-        Hittable.cpp Hittable.h Sphere.cpp Sphere.h
+        Hittable.cpp
+        Hittable.h
+        Sphere.cpp
+        Sphere.h
         HittableList.cpp
-        HittableList.h)
+        HittableList.h
+        RTproject.h
+)

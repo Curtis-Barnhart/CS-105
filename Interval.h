@@ -19,4 +19,5 @@ public:
 };
 const static Interval empty (-infinity, +infinity);
 const static Interval universe(-infinity, +infinity);
+
 #endif
