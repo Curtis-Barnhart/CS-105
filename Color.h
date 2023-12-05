@@ -7,6 +7,7 @@
 
 #include "Vec3.h"
 #include "iostream"
+#include "Interval.h"
 
 /**
  * Color is a wrapper over Vec3. Color simply uses the (x, y, z) values of Vec3 to store
@@ -20,6 +21,6 @@ using Color = Vec3;
  * @param out location to write the color values to
  * @param pixel_color the color instance whose values are written
  */
-void write_color(std::ostream &out, Color pixel_color);
+void write_color(std::ostream &out, Color pixel_color, int samples_per_pixel);
 
 #endif //RAYTRACER_COLOR_H

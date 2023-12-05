@@ -19,4 +19,5 @@ add_executable(
         HittableList.cpp
         HittableList.h
         RTproject.h
+        Camera.cpp
 )
