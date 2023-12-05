@@ -63,8 +63,10 @@ Vec3 Camera::pixel_sample_square() const {
 Color Camera::ray_color(const Ray& r, const Hittable& world) const {
     HitRecord rec;
     if (world.hit(r, Interval(0, infinity), rec)) {
-        return 0.5 * (rec.normal + Color(1,1,1));
+        Vec3 direction = random_on_hemisphere(rec.normal);
+        return 0.5 * ray_color(Ray(rec.p, direction), world);
     }
+
     Vec3 unit_direction = unit_vector(r.direction());
     auto a = 0.5*(unit_direction.y() + 1.0);
     return (1.0-a)*Color(1.0, 1.0, 1.0) + a*Color(0.5, 0.7, 1.0);

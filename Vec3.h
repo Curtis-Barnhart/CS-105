@@ -77,4 +77,23 @@ inline Vec3 unit_vector(Vec3 v) {
     return v / v.length();
 }
 
+inline Vec3 random_in_unit_sphere() {
+    while (true) {
+        auto p = Vec3::random(-1,1);
+        if (p.length_squared() < 1)
+        return p;
+    }
+}
+
+inline Vec3 random_unit_vector() {
+    return unit_vector(random_in_unit_sphere());
+}
+
+inline Vec3 random_on_hemisphere(const Vec3& normal) {
+    Vec3 on_unit_sphere = random_unit_vector();
+    if (dot(on_unit_sphere, normal) > 0.0) // In the same hemisphere as the normal
+        return on_unit_sphere;
+    else
+        return -on_unit_sphere;
+}
 #endif //RAYTRACER_VEC3_H

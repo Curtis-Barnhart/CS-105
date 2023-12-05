@@ -57,3 +57,11 @@ double Vec3::length() const {
 double Vec3::length_squared() const {
     return e[0]*e[0] + e[1]*e[1] + e[2]*e[2];
 }
+
+static Vec3 random() {
+    return Vec3(random_double(), random_double(), random_double());
+}
+
+static Vec3 random(double min, double max) {
+    return Vec3(random_double(min,max), random_double(min,max), random_double(min,max));
+}
