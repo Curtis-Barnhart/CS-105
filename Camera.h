@@ -30,7 +30,7 @@ private:
 
     [[nodiscard]] Vec3 pixel_sample_square() const;
 
-    [[nodiscard]] Color ray_color(const Ray& r, const Hittable& world) const;
+    [[nodiscard]] Color ray_color(const Ray& r, int depth, const Hittable& world) const;
 };
 
 
