@@ -3,6 +3,7 @@
 //
 
 #include "Vec3.h"
+#include "RTproject.h"
 
 Vec3::Vec3() : e{0, 0, 0} {}
 
@@ -58,10 +59,10 @@ double Vec3::length_squared() const {
     return e[0]*e[0] + e[1]*e[1] + e[2]*e[2];
 }
 
-static Vec3 random() {
+Vec3 Vec3::random() {
     return Vec3(random_double(), random_double(), random_double());
 }
 
-static Vec3 random(double min, double max) {
+Vec3 Vec3::random(double min, double max) {
     return Vec3(random_double(min,max), random_double(min,max), random_double(min,max));
 }

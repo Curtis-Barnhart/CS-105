@@ -13,7 +13,7 @@ void Camera::render(const Hittable& world) {
             Color pixel_color(0,0,0);
             for (int sample = 0; sample < samples_per_pixel; ++ sample){
                 Ray r = get_ray(i, j);
-                pixel_color += ray_color(r, world);
+                pixel_color += ray_color(r, max_depth, world);
             }
             write_color(std::cout, pixel_color, samples_per_pixel);
         }
@@ -60,11 +60,13 @@ Vec3 Camera::pixel_sample_square() const {
     return(px * pixel_delta_u) + (py * pixel_delta_v);
 }
 
-Color Camera::ray_color(const Ray& r, const Hittable& world) const {
+Color Camera::ray_color(const Ray& r, int depth, const Hittable& world) const {
     HitRecord rec;
+    if (depth<= 0)
+            return Color(0,0,0);
     if (world.hit(r, Interval(0, infinity), rec)) {
         Vec3 direction = random_on_hemisphere(rec.normal);
-        return 0.5 * ray_color(Ray(rec.p, direction), world);
+        return 0.5 * ray_color(Ray(rec.p, direction), depth-1, world);
     }
 
     Vec3 unit_direction = unit_vector(r.direction());

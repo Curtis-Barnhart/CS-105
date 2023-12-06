@@ -34,6 +34,9 @@ public:
 
     [[nodiscard]] double length() const;  // Returns the square root of the sum of the squares of a Vec3's components
     [[nodiscard]] double length_squared() const;  // Returns the sum of the squares of the components of a Vec3
+
+    static Vec3 random();
+    static Vec3 random(double min, double max);
 };
 
 // Point3 is just an alias for Vec3, but useful for geometric clarity in the code.
