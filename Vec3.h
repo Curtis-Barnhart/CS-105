@@ -5,6 +5,7 @@
 #ifndef RAYTRACER_VEC3_H
 #define RAYTRACER_VEC3_H
 
+
 #include <cmath>
 #include <iostream>
 
@@ -99,4 +100,6 @@ inline Vec3 random_on_hemisphere(const Vec3& normal) {
     else
         return -on_unit_sphere;
 }
+
+
 #endif //RAYTRACER_VEC3_H

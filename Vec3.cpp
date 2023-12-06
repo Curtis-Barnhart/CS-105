@@ -2,6 +2,8 @@
 // Created by Curtis Barnhart on 2023-11-06.
 //
 
+#include <cmath>
+
 #include "Vec3.h"
 #include "RTproject.h"
 
@@ -52,7 +54,7 @@ Vec3 &Vec3::operator/=(double t) {
 }
 
 double Vec3::length() const {
-    return sqrt(length_squared());
+    return std::sqrt(length_squared());
 }
 
 double Vec3::length_squared() const {

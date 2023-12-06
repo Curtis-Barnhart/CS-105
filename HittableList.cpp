@@ -7,6 +7,8 @@
 #include "HittableList.h"
 #include "Interval.h"
 
+using std::shared_ptr;
+
 HittableList::HittableList() = default;
 
 HittableList::HittableList(shared_ptr<Hittable> object) {

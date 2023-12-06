@@ -3,6 +3,7 @@
 #include "HittableList.h"
 #include "Sphere.h"
 
+using std::make_shared;
 
 int main() {
     HittableList world;
