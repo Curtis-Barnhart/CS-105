@@ -18,7 +18,7 @@ void Camera::render(const Hittable& world) {
             write_color(std::cout, pixel_color, samples_per_pixel);
         }
     }
-    std::clog << "\rDone.               \n";
+    std::clog << "\rDone.                          \n";
 }
 
 void Camera::initialize() {
@@ -26,17 +26,17 @@ void Camera::initialize() {
     image_height = (image_height < 1) ? 1 : image_height;
 
     center = Point3 (0, 0, 0);
-// Determine viewport dimensions.
+    // Determine viewport dimensions.
     auto focal_length = 1.0;
     auto viewport_height = 2.0;
     auto viewport_width = viewport_height * (static_cast<double>(image_width)/image_height);
-// Calculate the vectors across the horizontal and down the vertical viewport edges.
+    // Calculate the vectors across the horizontal and down the vertical viewport edges.
     auto viewport_u = Vec3(viewport_width, 0, 0);
     auto viewport_v = Vec3(0, -viewport_height, 0);
-// Calculate the horizontal and vertical delta vectors from pixel to pixel.
+    // Calculate the horizontal and vertical delta vectors from pixel to pixel.
     pixel_delta_u = viewport_u / image_width;
     pixel_delta_v = viewport_v / image_height;
-// Calculate the location of the upper left pixel.
+    // Calculate the location of the upper left pixel.
     auto viewport_upper_left = center - Vec3(0, 0, focal_length) - viewport_u/2 - viewport_v/2;
     pixel00_loc = viewport_upper_left + 0.5 * (pixel_delta_u + pixel_delta_v);
 }

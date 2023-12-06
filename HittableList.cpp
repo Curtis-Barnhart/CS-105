@@ -2,10 +2,10 @@
 // Created by Joshua Nielsen on 11/18/23.
 //
 
+#include <utility>
+
 #include "HittableList.h"
 #include "Interval.h"
-
-#include <utility>
 
 HittableList::HittableList() = default;
 

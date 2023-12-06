@@ -1,11 +1,12 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+
+#include <iostream>
+
 #include "RTproject.h"
 #include "Color.h"
 #include "Hittable.h"
-
-#include <iostream>
 
 class Camera {
 public:
@@ -30,4 +31,6 @@ private:
 
     [[nodiscard]] Color ray_color(const Ray& r, const Hittable& world) const;
 };
+
+
 #endif
