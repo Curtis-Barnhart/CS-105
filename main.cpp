@@ -1,4 +1,5 @@
-#include "RTproject.h"
+#include <memory>
+
 #include "Camera.h"
 #include "HittableList.h"
 #include "Sphere.h"

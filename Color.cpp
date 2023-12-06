@@ -11,9 +11,9 @@ void write_color(std::ostream &out, Color pixel_color, int samples_per_pixel) {
 
     //Divide color by the number of samples.
     auto scale = 1.0 / samples_per_pixel;
-    r*= scale;
-    g*= scale;
-    b*= scale;
+    r *= scale;
+    g *= scale;
+    b *= scale;
 
     static const Interval intensity(0.000, 0.999);
     out << static_cast<int>(256 * intensity.clamp(r)) << ' '
